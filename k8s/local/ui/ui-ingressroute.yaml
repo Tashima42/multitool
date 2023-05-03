@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ui-secure
+  namespace: multitool-local
+spec:
+  entrypoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host("t.local.tashima.space") && PathPrefix("/ui")
+      services:
+        - name: ui-service
+          port: 8080

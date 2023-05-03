@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  namespace: multitool-local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: ui
+  template:
+    metadata:
+      labels:
+        component: ui
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: multitool-ui
+          image: k3d-registry.local.tashima.space/tashima42/multitool/ui
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 80

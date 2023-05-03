@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pocketbase-deployment
+  namespace: multitool-local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: pocketbase
+  template:
+    metadata:
+      labels:
+        component: pocketbase
+    spec:
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: pocketbase-storage
+          persistentVolumeClaim: 
+            claimName: pocketbase-persistent-volume-claim
+      containers:
+        - name: multitool-pocketbase
+          image: ghcr.io/muchobien/pocketbase:0.15.2
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 8090

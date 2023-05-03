@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pocketbase-secure
+  namespace: multitool-local
+spec:
+  entrypoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host("t.local.tashima.space")
+      services:
+        - name: pocketbase-service
+          port: 8090

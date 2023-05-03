@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pocketbase-service
+  namespace: multitool-local
+spec:
+  ports:
+    - name: pocketbase-service
+      port: 8090
+      targetPort: 8090
+  selector:
+    component: pocketbase
