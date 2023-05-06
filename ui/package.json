@@ -10,7 +10,9 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "pocketbase": "^0.14.3",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
